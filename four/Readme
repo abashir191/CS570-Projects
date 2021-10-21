@@ -1,0 +1,61 @@
+
+I used several methods to implement the FIFO and LRU replace algorithms to get the desired output. Both LRU and FIFO had 2 extra methods to
+LookUp the page faults and Add to locate/return it. 
+
+The FIFO methods call FIFOAdd which checks if page number is located by calling the FIFOLookUp method. If the page is not found, then 
+FIFOAdd is used to insert into memory. Finally, the FIFO method prints the page frame and returns pageFaultcnt.
+
+The LRU methods follow the same logic essentially. LRULookUp finds the least recently used page and LRUAdd returns the page fault. LRU prints the page frame and returns the pageFaultcnt. 
+
+
+The program is ran by using a makefile and typing "make" in the terminal. If there are no errors, then type "./testvm.c 7 3".
+
+Output Results:
+
+Running program using FIFO algorithm ... ...
+ 5 -1 -1 
+ 5  2 -1 
+ 5  2 -1 
+ 5  2  0 
+ 4  2  0 
+ 4  6  0 
+ 4  6  0 
+ 4  6  0 
+ 4  6  1 
+ 3  6  1 
+ 3  4  1 
+ 3  4  5 
+ 0  4  5 
+ 0  4  5 
+ 0  4  5 
+ 0  6  5 
+ 0  6  2 
+ 0  6  2 
+ 0  6  2 
+ 1  6  2 
+page fault of FIFO: 13
+
+
+The Same Access Pattern: 5 2 2 0 4 6 4 4 1 3 4 5 0 4 5 6 2 0 0 1 
+Running program using LRU algorithm ... ...
+ 5 -1 -1 
+ 5  2 -1 
+ 5  2 -1 
+ 5  2  0 
+ 4  2  0 
+ 4  6  0 
+ 4  6  0 
+ 4  6  0 
+ 4  6  1 
+ 4  3  1 
+ 4  3  1 
+ 4  3  5 
+ 4  0  5 
+ 4  0  5 
+ 4  0  5 
+ 4  6  5 
+ 2  6  5 
+ 2  6  0 
+ 2  6  0 
+ 2  1  0 
+page fault of LRU: 13
